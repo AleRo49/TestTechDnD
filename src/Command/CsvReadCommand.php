@@ -44,6 +44,10 @@ class CsvReadCommand extends Command
             $io->error("File not found at: $filePath");
             return Command::FAILURE;
         }
+        $fileExt = pathinfo($filePath, PATHINFO_EXTENSION);
+        if ($fileExt !== 'csv'){
+            $io->error("File is not a CSV file: $filePath");
+        }
 
         $jsonOutput = $input->getOption('json');
 
