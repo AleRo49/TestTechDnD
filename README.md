@@ -20,3 +20,10 @@ php bin/console app:csv-read public/products.csv --json
 ````
 Now the result will be :
 ![img_1.png](ressources/documentation/img_1.png)
+
+## Run the command by cron
+In order to run the command by a cron, just add a line in crontab :
+```
+0 7-19 * * * php path/to/project/bin/console app:csv-read path/to/project/public/products.csv
+```
+In this exemple, the command will be triggered at minute 0 of every hour from 7:00am trough 7:00pm
