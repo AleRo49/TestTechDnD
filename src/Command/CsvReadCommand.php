@@ -3,7 +3,7 @@
 // src/Command/CsvReadCommand.php
 namespace App\Command;
 
-use App\Controllers\ProductController;
+use App\Controller\ProductController;
 use Exception;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -22,7 +22,7 @@ class CsvReadCommand extends Command
      */
     protected function configure(): void
     {
-        $this->setName('app:csc-read')
+        $this->setName('app:csv-read')
             ->setDescription('Read a CSV and displays the result')
             ->setHelp('Reads a CSV file passed as a parameter and displays the result as a table or json in the console.');
 
@@ -35,7 +35,7 @@ class CsvReadCommand extends Command
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 

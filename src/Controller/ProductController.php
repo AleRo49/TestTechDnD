@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controller;
 
 use App\Entity\Product;
 use App\Reader\CsvReader;
@@ -15,6 +15,23 @@ class ProductController
 
     /** @var array<Product>  */
     private array $products;
+
+    /**
+     * @param CsvReader $reader
+     * @return void
+     */
+    public function setReader(CsvReader $reader): void
+    {
+        $this->reader = $reader;
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function getProducts(): array
+    {
+        return $this->products;
+    }
 
 
     /**

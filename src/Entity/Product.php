@@ -46,6 +46,14 @@ class Product implements JsonSerializable
     }
 
     /**
+     * @return int
+     */
+    public function getSku(): int
+    {
+        return $this->sku;
+    }
+
+    /**
      * @param DateTime $createdAt
      * @return void
      */
@@ -120,9 +128,10 @@ class Product implements JsonSerializable
 
     private function getSlugFromTitle(): string
     {
-        $slug = preg_replace('/[^\p{L}\p{N}\s]/u', '', $this->title);
-        return str_replace(" ", "-", strtolower($slug));
+        $slug = preg_replace('/[^A-Za-z0-9\-]/u', '-', $this->title);
+        return strtolower($slug);
     }
+
     /**
      * @param bool $isEnabled
      * @return void
@@ -130,6 +139,14 @@ class Product implements JsonSerializable
     public function setIsEnabled(bool $isEnabled): void
     {
         $this->isEnabled = $isEnabled;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled(): bool
+    {
+        return $this->isEnabled;
     }
 
     /**
@@ -188,5 +205,45 @@ class Product implements JsonSerializable
                 'slug' => $this->slug,
             ]
         ];
+    }
+
+    /**
+     * @return DateTime
+     */
+    public function getCreatedAt(): DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug(): string
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency(): string
+    {
+        return $this->currency;
     }
 }
